@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ChatGPT 맞춤 설정 문장 생성기</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      color: #d63384;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #2e9e67;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #248057;
+    }
+
+    .section-title {
+      margin-top: 25px;
+      font-weight: bold;
+      font-size: 1.05rem;
+    }
+
+    label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9f9f9;
+      padding: 6px 10px;
+      margin-bottom: 6px;
+      border-radius: 4px;
+    }
+
+    .highlight {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 10px;
+      margin-top: 25px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🧠 ChatGPT 맞춤 설정 문장 생성기</h1>
+  <p>체크된 항목을 선택하면 아래 입력창에 자동으로 반영됩니다. 버튼을 누르면 영어 프롬프트와 함께 복사됩니다!</p>
+
+  <!-- 체크 항목 전체 복원 시작 -->
+  <div class="section-title">🧠 감정 상태</div>
+  <label>불안하거나 우울함을 자주 느껴요 <input type="checkbox" value="불안하거나 우울함을 자주 느껴요" onchange="updateText()"></label>
+  <label>자존감이 낮다고 느껴질 때가 있어요 <input type="checkbox" value="자존감이 낮다고 느껴질 때가 있어요" onchange="updateText()"></label>
+  <label>이유 없는 절망감이 들 때가 있어요 <input type="checkbox" value="이유 없는 절망감이 들 때가 있어요" onchange="updateText()"></label>
+
+  <div class="section-title">💬 대화 목적</div>
+  <label>감정을 나누고 위로받고 싶어요 <input type="checkbox" value="감정을 나누고 위로받고 싶어요" onchange="updateText()"></label>
+  <label>공감과 이해를 받고 싶어요 <input type="checkbox" value="공감과 이해를 받고 싶어요" onchange="updateText()"></label>
+  <label>도움이 될 만한 팁도 듣고 싶어요 <input type="checkbox" value="도움이 될 만한 팁도 듣고 싶어요" onchange="updateText()"></label>
+
+  <div class="section-title">🧭 조언에 대한 기대</div>
+  <label>항상 조언해줘도 좋아요 <input type="checkbox" value="항상 조언해줘도 좋아요" onchange="updateText()"></label>
+  <label>필요할 때만 부드럽게 제안해줘요 <input type="checkbox" value="필요할 때만 부드럽게 제안해줘요" onchange="updateText()"></label>
+  <label>조언보다는 공감 위주로 대화하고 싶어요 <input type="checkbox" value="조언보다는 공감 위주로 대화하고 싶어요" onchange="updateText()"></label>
+
+  <div class="section-title">🎙️ 챗봇의 말투</div>
+  <label>친구처럼 따뜻하고 편안하게 <input type="checkbox" value="친구처럼 따뜻하고 편안하게" onchange="updateText()"></label>
+  <label>차분하고 조용한 톤 <input type="checkbox" value="차분하고 조용한 톤" onchange="updateText()"></label>
+  <label>최대한 자연스러운 대화체로 <input type="checkbox" value="최대한 자연스러운 대화체로" onchange="updateText()"></label>
+
+    <div class="section-title">⚠️ 주의할 점</div>
+    <label>너무 전문가처럼 말하지 말아줘요 <input type="checkbox" value="너무 전문가처럼 말하지 말아줘요" onchange="updateText()"></label>
+    <label>판단하거나 비판하지 말아줘요 <input type="checkbox" value="판단하거나 비판하지 말아줘요" onchange="updateText()"></label>
+    
+    <div class="section-title">🧑‍⚕️ 상담적 안내</div>
+    <label>감정이 심각해 보이면 전문 상담/약물 치료도 권해줘요 <input type="checkbox" value="감정이 심각해 보이면 전문 상담/약물 치료도 권해줘요"
+        onchange="updateText()"></label>
+    <label>내 상태가 위태로워 보일 땐 반드시 경고해줘요 <input type="checkbox" value="내 상태가 위태로워 보일 땐 반드시 경고해줘요"
+        onchange="updateText()"></label>
+    
+    <div class="section-title">🧡 대화 마무리 방식</div>
+    <label>대화 마지막에 감정을 탐색할 수 있는 질문 하나 던져줘요 <input type="checkbox" value="대화 마지막에 감정을 탐색할 수 있는 질문 하나 던져줘요"
+        onchange="updateText()"></label>
+    <label>마무리는 따뜻한 위로로 해줘요 <input type="checkbox" value="마무리는 따뜻한 위로로 해줘요" onchange="updateText()"></label>
+    
+    <div class="highlight">
+      <strong>🔥 필수 프롬프트 삽입</strong><br>
+      <label>아래 영어 프롬프트 문장을 함께 복사하려면 꼭 체크해주세요 (필수) <input type="checkbox" id="isPrompt" onchange="updateText()"></label>
+    </div>
+    
+    <textarea id="userInput" placeholder="선택한 항목이 여기에 자동으로 입력됩니다..."></textarea>
+    
+    <div style="text-align: center; margin-top: 20px;">
+      <button type="button" onclick="generate()">프롬프트 생성 및 복사</button>
+    </div>
+    
+    <script>
+      function updateText() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const includePrompt = document.getElementById("isPrompt").checked;
+
+        const selected = Array.from(checkboxes)
+          .filter(c => c.checked && c.id !== "isPrompt")
+          .map(c => c.value)
+          .join('\n');
+
+        const promptHeader = `Based on the selected checklist items below, generate a concise and natural-sounding description that can be used in ChatGPT's custom instructions section. The tone should be warm, friendly, and emotionally supportive. Seamlessly incorporate emotional state, conversation goals, advice preferences, tone style, and important cautions. Keep the response brief to save tokens, but make sure the key intentions are fully captured. Write only in Korean.\n\n`;
+
+        document.getElementById("userInput").value = includePrompt ? (promptHeader + selected) : selected;
+      }
+
+      function generate() {
+        const includePrompt = document.getElementById("isPrompt").checked;
+        if (!includePrompt) {
+          alert("⚠️ 영어 프롬프트 문장을 포함하려면 마지막 항목을 꼭 체크해주세요!");
+          return;
+        }
+
+        const fullText = document.getElementById("userInput").value.trim();
+        navigator.clipboard.writeText(fullText).then(() => {
+          alert("✅ 프롬프트가 복사되었습니다! 이제 ChatGPT에 붙여넣으세요.");
+        }).catch(err => {
+          alert("⚠️ 복사에 실패했습니다: " + err);
+        });
+      }
+    </script>
+    </body>
+    
+    </html>
